@@ -1,0 +1,820 @@
+/* Style de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playball', cursive; /* 'cursive' est une police de secours */
+}
+
+    /* Ajouter une image de fond au body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 70px; /* Compense la hauteur de la navbar fixe */
+    background: url('fond.jpeg') no-repeat center center fixed;
+    background-size: cover; /* Ajuste l'image pour qu'elle couvre tout l'écran */
+    color: #fff; /* Garde le texte lisible */
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    padding: 20px;
+    background: transparent;
+    transition: background-color 0.3s ease-in-out; /* Transition fluide */
+    border-bottom: 0px solid #c300ff;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;   
+}
+
+/* Navbar opaque */
+nav.opaque {
+    background: rgba(0, 0, 0, 0.8); /* Couleur de fond opaque */
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 0px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: 'Playball', cursive;
+    justify-content: center;
+}
+
+nav ul li a:hover {
+    transform: scale(1.2); /* Agrandit légèrement le lien */
+    transition: transform 0.3s ease-in-out; /* Ajoute une transition fluide */
+}
+
+/* Animation de soulignement progressif */
+nav ul li a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #c300ff; /* Couleur du soulignement */
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* Étend le soulignement sur toute la largeur du lien */
+}
+
+/* Animation de changement de couleur avec dégradé */
+nav ul li a {
+    background: linear-gradient(90deg, transparent, transparent);
+    -webkit-background-clip: text;
+    color: #ffffff; /* Couleur normale du texte */
+    transition: background 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    background: linear-gradient(90deg, #ff00cc, #3333ff); /* Dégradé visible au survol */
+    -webkit-background-clip: text;
+    color: transparent; /* Rend le dégradé visible en masquant le texte */
+}
+
+.logo {
+    font-size: 40px;
+    color: #fff;
+    margin-right: 350px;
+}
+
+/* Section d'introduction */
+.intro {
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.intro-content {
+    opacity: 0; /* Initialement invisible */
+    transform: translateY(20px); /* Position plus basse au départ */
+    animation: fadeInUp 1.5s ease-out forwards; /* Animation */
+    text-align: center;
+    overflow: hidden; /* Évite les scrollbars horizontales */
+}
+
+
+/* Animation clé */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    
+/* Ajout de délais pour que les éléments apparaissent progressivement */
+
+.intro-content p {
+    font-size: 18px;
+    color: #fff;
+    animation: float 3s ease-in-out infinite;
+}
+
+.intro-content h2 {
+    font-size: 36px;
+    margin: 10px 0;
+    color: #c300ff;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.intro-content h3 {
+    font-size: 24px;
+    font-weight: 300;
+    color: #fff;
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+/* Effet de flottement (sans dépasser les limites visibles) */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px); /* Ne déplace que verticalement */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Effet de zoom pulsant (limité) */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05); /* Léger zoom pour éviter un débordement */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Image de présentation */
+.intro-image {
+    position: relative;
+    margin: 40px auto;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(145deg, #c300ff, #1b172a);
+    padding: 5px;
+}
+
+.image-overlay img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0%);
+    border-radius: 50%;
+}
+
+
+/* Style du header */
+header {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+section {
+    margin: 50px 0; /* Ajoute une marge de 50px au-dessus et en dessous de chaque section */
+    padding: 20px 0; /* Ajoute un espace interne en haut et en bas */
+}
+
+
+/* Conteneur de la biographie et du profil */
+#biographie {
+    display: flex;
+    max-width: 800px;
+    margin: 20px auto;
+    margin-top: 30vh; /* Décale la biographie vers le bas, équivalent à la hauteur de la fenêtre */
+}
+
+/* Style de la carte de profil */
+.profile-card {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: auto; /* Conserve le ratio original */
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #c300ff;
+    object-fit: cover; /* S'assure que l'image est bien centrée */
+}
+
+
+.profile-card h3 {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.profile-card p a {
+    color: #c300ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.profile-card p a:hover {
+    text-decoration: underline;
+}
+
+/* Style de la section biographie */
+.biographie-content {
+    flex: 1;
+    background-color: #1b172a;
+    padding: 20px;
+    border: 2px solid #c300ff;
+    border-radius: 10px;
+}
+
+/* Style des titres de section */
+section h2 {
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Style du titre de la section projets */
+.section-title {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 2em;
+}
+
+.section-title h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+iframe {
+    border: none; /* Supprime les bordures */
+    width: 100%; /* Ajustez la largeur selon vos besoins */
+    height: 315px; /* Ajustez la hauteur selon vos besoins */
+}
+
+/* Style pour le carrousel */
+.carousel {
+    position: relative;
+    max-width: 600px;
+    margin: 20px auto;
+    overflow: hidden; /* Cache les éléments hors cadre */
+    border: 2px solid #c300ff;
+    border-radius: 10px;
+    background-color: #1b172a;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%; /* Chaque élément occupe 100% de la largeur du conteneur */
+    padding: 40px;
+    text-align: center;
+}
+
+.carousel-item h3 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.carousel-item p {
+    color: #ffffff;
+    padding-top: 5%;
+}
+
+.carousel-item img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Boutons de contrôle */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    border: none;
+    font-size: 2em;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background: #c300ff;
+}
+
+/* Section des projets vidéo */
+#projets-video {
+    margin-top: 30px;
+}
+
+/* Même style pour le titre */
+#projets-video .section-title {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 2em;
+}
+
+#projets-video .section-title h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+/* Conteneur des vidéos */
+.video-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Box sans fond derrière */
+.video-box {
+    padding: 0;
+    text-align: center;
+    box-shadow: none; /* Pas d'ombre */
+    transition: transform 0.3s ease;
+}
+
+.video-box iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 5px;
+    border: 2px solid #c300ff; /* Bordure fine autour de la vidéo */
+    margin-bottom: 10px;
+}
+
+.video-box p {
+    color: #ffffff;
+    font-size: 1em;
+    margin: 10px 0 0 0;
+}
+
+.video-box:hover {
+    transform: scale(1.05);
+}
+
+/* Conteneur principal */
+.competences-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+/* Photo à gauche */
+.competences-photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.competence-pic {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenu à droite */
+.competences-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Rectangle pour logiciels maîtrisés */
+.competences-logiciels {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.competences-logiciels h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+/* Cinq petits carrés pour les icônes */
+.competences-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Trois colonnes */
+    gap: 20px; /* Espace entre les icônes */
+    justify-items: center; /* Centrer les icônes */
+    margin-top: 20px;
+}
+
+.competence-icon {
+    width: 120px; /* Augmentation de la taille */
+    height: 120px;
+    border: 1px solid #c300ff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1b172a, #1b172a);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Effet au survol */
+.competence-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Images à l'intérieur des icônes */
+.competence-icon img {
+    max-width: 90%; /* Images plus grandes */
+    max-height: 90%;
+    border-radius: 5px;
+}
+
+/* Ajustement pour les lignes */
+.competences-icons div:nth-child(4),
+.competences-icons div:nth-child(5) {
+    grid-column: span 3; /* Positionne les deux derniers éléments sur une nouvelle ligne */
+    justify-self: center; /* Centré */
+}
+
+/* Titre des compétences dans un rectangle */
+.section-title {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 2em;
+}
+
+.section-title h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+
+/* Conteneur principal du contact */
+.contact-container {
+    display: flex;
+    max-width: 800px;
+    margin: 20px auto;
+    align-items: center;
+}
+
+
+/* Conteneur pour le formulaire */
+.contact-form {
+    flex: 1;
+    background-color: #1b172a;
+    padding: 20px;
+    border: 2px solid #c300ff;
+    border-radius: 10px;
+}
+
+.contact-form form label {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-form form input, 
+.contact-form form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #121b6f;
+    color: #ffffff;
+}
+
+.contact-form form button {
+    background-color: #c300ff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form form button:hover {
+    background-color: #555;
+}
+
+/* Titre de la section contact */
+.section-title {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.section-title h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 2em;
+}
+
+#reseaux-sociaux {
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.reseaux-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.reseau {
+    background-color: #1b172a;
+    border: 2px solid #c300ff;
+    border-radius: 10px;
+    padding: 15px;
+    width: 120px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.reseau img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.reseau p {
+    font-size: 1em;
+    margin: 0;
+}
+
+.reseau:hover {
+    transform: scale(1.1);
+    background-color: #c300ff;
+    color: #ffffff;
+}
+
+
+/* Style du footer */
+footer {
+    background-color: #1b172a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Pour les écrans de tablettes (entre 600px et 1024px) */
+@media screen and (max-width: 1024px) and (min-width: 600px) {
+    #biographie {
+        flex-direction: column; /* Les sections se superposent */
+        align-items: center;
+    }
+
+    .profile-card {
+        margin-right: 0; /* Retirer la marge */
+        margin-bottom: 20px; /* Espacement entre les sections */
+    }
+
+    .biographie-content {
+        width: 100%; /* Prend toute la largeur */
+        margin-bottom: 20px; /* Espacement entre les sections */
+    }
+
+    .competence-container, .contact-container {
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .competence-photo{
+        width: 100%; /* Largeur maximale */
+        padding: 0px;
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-left: 18px;
+    }
+}
+
+/* Pour les écrans de téléphones (moins de 600px) */
+@media screen and (max-width: 600px) {
+    .profile-card {
+        margin-right: 0; /* Retirer la marge */
+        margin-bottom: 20px; /* Espacement entre les sections */
+    }
+
+    .biographie-content {
+        width: 100%; /* Prend toute la largeur */
+        margin-bottom: 20px; /* Espacement entre les sections */
+    }
+    nav ul {
+        flex-direction: column; /* La navbar devient verticale */
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Espacement entre les liens */
+    }
+
+    #biographie {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .competence-container, .contact-container {
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .section-title {
+        padding: 5px;
+    }
+
+    .competence-photo{
+        width: 100%; /* Largeur maximale */
+        padding: 10px;
+        flex-direction: column;
+        margin-bottom: 20px;
+        align-items: center;
+        margin-left: 18px;
+    }
+
+    .competence-list, .contact-form {
+        width: 100%; /* Largeur maximale */
+    }
+
+    .projet {
+        width: 100%; /* Chaque projet prend la largeur de l'écran */
+    }
+}
+
+/* Rendre les images responsives */
+img {
+    max-width: 100%;
+    height: auto; /* Garde le ratio */
+}
+
+/* Style du menu burger */
+.menu-burger {
+    display: none; /* Par défaut, le bouton n'est pas visible */
+}
+
+#burger-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100; /* Toujours au-dessus */
+}
+
+.burger-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 5px auto;
+    transition: background-color 0.3s ease;
+}
+
+/* Masquer les liens par défaut sur mobile */
+#navbar-links {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar-links li {
+    margin: 0 15px;
+}
+
+/* Cacher les liens sur mobile */
+#navbar-links.mobile-hidden {
+    display: none;
+    flex-direction: column;
+    background-color: #1b172a;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
+    border-top: 2px solid #c300ff;
+}
+
+#navbar-links.mobile-hidden li {
+    margin: 10px 0;
+}
+
+/* Afficher le menu burger sur mobile */
+@media screen and (max-width: 600px) {
+    .menu-burger {
+        display: block;
+        position: absolute;
+        top: 1px;
+        right: 20px;
+    }
+
+    #navbar-links {
+        display: none; /* Cacher par défaut */
+    }
+
+    #navbar-links.mobile-visible {
+        display: flex; /* Afficher lorsque le menu est ouvert */
+    }
+}
